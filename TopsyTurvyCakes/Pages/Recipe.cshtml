@@ -1,8 +1,9 @@
 ﻿@page
 @using TopsyTurvyCakes.Models
 @{ 
-    var recipeService = new RecipesService();
-    var recipes = await recipeService.GetAllAsync();
+    var id = 1;
+    var recipesService = new RecipesService();
+    var recipe = await recipesService.FindAsync(id);
 }
 
 <!DOCTYPE html>
@@ -48,32 +49,59 @@
             </nav>
         </div>
         <div class="row">
-            <h2 class="title">My Favorite Recipes</h2>
+            <h2 class="title">@recipe.Name</h2>
         </div>
     </header>
 
     <div class="container">
 
-        <div class="row recipes">
-            @foreach (var recipe in recipes)
-            {
-                <div class="recipe col-md-4">
-                    <img class="img img-thumbnail" src="@recipe.GetInlineImageSrc()" />
-                    <h3><a href="/Recipe">@recipe.Name</a></h3>
-                    <p>@recipe.Description</p>
+        <div class="row recipe">
+
+            <div class="col-md-8">
+
+                <div class="col-md-12">
+
+                    <span class="description">
+                        @recipe.Description
+                    </span>
+
+                    <hr />
                 </div>
 
-            }
+                <div class="ingredients col-md-4">
+                    <h4>Ingredients</h4>
+                    <ul>
+                        @foreach (var ingredient in recipe.IngredientsList)
+                        {
+                            <li>@ingredient</li>
+                        }
 
+                    </ul>
+                </div>
+                @foreach (var step in recipe.DirectionsList)
+                {
+                    <div class="directions col-md-8">
+                    <h4>Directions</h4>
+                    <ol>
+                        <li>@step</li>
+                    </ol>
+                </div>
+
+                }
+ 
+            </div>
+
+            <div class="col-md-4 text-right">
+                <img class="img img-thumbnail" src="@recipe.GetInlineImageSrc()" />
+            </div>
 
         </div>
-
     </div>
 
-    <footer>
-        <div class="text-center">
-            <span class="text-muted">Last Rendered: @DateTime.Now </span>
-        </div>
-    </footer>
+        <footer>
+            <div class="text-center">
+                <span class="text-muted">Last Rendered: @DateTime.Now </span>
+            </div>
+        </footer>
 </body>
 </html>

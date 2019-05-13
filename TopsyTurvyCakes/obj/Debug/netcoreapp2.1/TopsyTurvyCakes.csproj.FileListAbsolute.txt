@@ -21,3 +21,4 @@ C:\Users\gprot\Desktop\CS4790\TopsyTurvyCakes\TopsyTurvyCakes\obj\Debug\netcorea
 C:\Users\gprot\Desktop\CS4790\TopsyTurvyCakes\TopsyTurvyCakes\obj\Debug\netcoreapp2.1\TopsyTurvyCakes.dll
 C:\Users\gprot\Desktop\CS4790\TopsyTurvyCakes\TopsyTurvyCakes\obj\Debug\netcoreapp2.1\TopsyTurvyCakes.pdb
 C:\Users\gprot\Desktop\CS4790\TopsyTurvyCakes\TopsyTurvyCakes\obj\Debug\netcoreapp2.1\TopsyTurvyCakes.csproj.CopyComplete
+C:\Users\gprot\Desktop\CS4790\TopsyTurvyCakes\TopsyTurvyCakes\obj\Debug\netcoreapp2.1\Razor\Pages\Recipe.g.cshtml.cs
