@@ -1,11 +1,10 @@
 ﻿@page "{id}"
-@using TopsyTurvyCakes.Models
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
 @{ 
-    Layout = "_Layout";
     var id = long.Parse((string)RouteData.Values["id"]);
     var recipesService = new RecipesService();
     var recipe = await recipesService.FindAsync(id);
+    ViewData["Title"] = recipe.Name;
 }
 <div class="container">
 
