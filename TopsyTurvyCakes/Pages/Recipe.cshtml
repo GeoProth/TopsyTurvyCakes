@@ -1,10 +1,14 @@
 ﻿@page "{id}"
 
-@{ 
+@{
     var id = long.Parse((string)RouteData.Values["id"]);
     var recipesService = new RecipesService();
     var recipe = await recipesService.FindAsync(id);
     ViewData["Title"] = recipe.Name;
+}
+@section Title  {
+    <h2 class="title">@recipe.Name</h2>
+    <a asp-page="Admin/AddEditRecipe" asp-route-id="@recipe.Id" class="add-recipe btn btn-primary">Edit Recipe</a>
 }
 <div class="container">
 

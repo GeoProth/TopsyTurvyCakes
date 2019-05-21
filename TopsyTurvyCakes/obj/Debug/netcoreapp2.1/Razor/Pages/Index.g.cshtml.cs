@@ -61,7 +61,7 @@ using TopsyTurvyCakes.Models;
                 WriteLiteral("\r\n    <h2 class=\"title\">My Favorite Recipes</h2>\r\n    ");
                 EndContext();
                 BeginContext(142, 83, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "080cb069894a473590d9f5ecf23f485f", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c31fc997858b4578b64d3127317e4a1f", async() => {
                     BeginContext(211, 10, true);
                     WriteLiteral("Add Recipe");
                     EndContext();
@@ -108,7 +108,7 @@ WriteAttributeValue("", 436, recipe.GetInlineImageSrc(), 436, 27, false);
             WriteLiteral(" />\r\n                <h3>");
             EndContext();
             BeginContext(489, 64, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "18025acb03cb46dca0fcf5ed269ef44f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c6f8a31d4f3f4b0a8a84c672522bd577", async() => {
                 BeginContext(538, 11, false);
 #line 17 "C:\Users\gprot\Desktop\CS4790\TopsyTurvyCakes\TopsyTurvyCakes\Pages\Index.cshtml"
                                                                Write(recipe.Name);

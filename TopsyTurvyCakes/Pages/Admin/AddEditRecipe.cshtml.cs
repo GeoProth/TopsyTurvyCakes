@@ -8,7 +8,7 @@ using TopsyTurvyCakes.Models;
 
 namespace TopsyTurvyCakes.Pages.Admin
 {
-    
+
     public class AddEditRecipeModel : PageModel
     {
         [FromRoute]
@@ -19,6 +19,8 @@ namespace TopsyTurvyCakes.Pages.Admin
         }
         [BindProperty]
         public Recipe Recipe { get; set; }
+        [BindProperty]
+        public string Image { get; set; }
 
         public IRecipesService recipesService { get; set; }
 
@@ -34,9 +36,13 @@ namespace TopsyTurvyCakes.Pages.Admin
         [HttpPost]
         public async Task<IActionResult> OnPostAsync()
         {
-            Recipe.Id = Id.GetValueOrDefault();
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+            Recipe = await recipesService.FindAsync(Id.GetValueOrDefault()) ?? new Recipe();
             await recipesService.SaveAsync(Recipe);
-            return RedirectToPage("/Recipe", new { id = Recipe.Id });
+            return RedirectToPage("/Recipe", Recipe.Id);
         }
         public async Task<IActionResult> OnPostDelete()
         {
