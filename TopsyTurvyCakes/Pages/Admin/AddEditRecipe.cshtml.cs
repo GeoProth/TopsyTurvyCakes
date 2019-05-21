@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using TopsyTurvyCakes.Models;
 
+
 namespace TopsyTurvyCakes.Pages.Admin
 {
 
@@ -20,7 +21,7 @@ namespace TopsyTurvyCakes.Pages.Admin
         [BindProperty]
         public Recipe Recipe { get; set; }
         [BindProperty]
-        public string Image { get; set; }
+        public Microsoft.AspNetCore.Http.IFormFile Image { get; set; }
 
         public IRecipesService recipesService { get; set; }
 
@@ -40,9 +41,11 @@ namespace TopsyTurvyCakes.Pages.Admin
             {
                 return Page();
             }
+           
             Recipe = await recipesService.FindAsync(Id.GetValueOrDefault()) ?? new Recipe();
+            
             await recipesService.SaveAsync(Recipe);
-            return RedirectToPage("/Recipe", Recipe.Id);
+            return RedirectToPage("/Recipe", new { id = Recipe.Id });
         }
         public async Task<IActionResult> OnPostDelete()
         {
