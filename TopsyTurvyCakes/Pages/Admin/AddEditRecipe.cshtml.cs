@@ -41,9 +41,26 @@ namespace TopsyTurvyCakes.Pages.Admin
             {
                 return Page();
             }
-           
+
             Recipe = await recipesService.FindAsync(Id.GetValueOrDefault()) ?? new Recipe();
-            
+
+            Recipe.Name = Request.Form["Recipe.Name"];
+            Recipe.Description = Request.Form["Recipe.Description"];
+            Recipe.Ingredients = Request.Form["Recipe.Ingredients"];
+            Recipe.Directions = Request.Form["Recipe.Directions"];
+            Recipe.Id = Id.GetValueOrDefault();
+
+            if (Image != null)
+            {
+                using (var stream = new System.IO.MemoryStream())
+                {
+                    await Image.CopyToAsync(stream);
+                    Recipe.Image = stream.ToArray();
+                    Recipe.ImageContentType = Image.ContentType;
+                }
+            }
+
+
             await recipesService.SaveAsync(Recipe);
             return RedirectToPage("/Recipe", new { id = Recipe.Id });
         }
